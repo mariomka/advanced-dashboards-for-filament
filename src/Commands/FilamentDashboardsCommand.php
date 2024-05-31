@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Mariomka\FilamentDashboards\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentDashboardsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-dashboards';
 
     public $description = 'My command';
 
