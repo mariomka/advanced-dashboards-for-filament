@@ -1,6 +1,6 @@
 <?php
 
-namespace Mariomka\FilamentDashboards\Database\Factories;
+namespace Mariomka\AdvancedDashboardsForFilament\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

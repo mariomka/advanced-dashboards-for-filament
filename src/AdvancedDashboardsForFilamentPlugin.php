@@ -1,15 +1,15 @@
 <?php
 
-namespace Mariomka\FilamentDashboards;
+namespace Mariomka\AdvancedDashboardsForFilament;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class FilamentDashboardsPlugin implements Plugin
+class AdvancedDashboardsForFilamentPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'filament-dashboards';
+        return 'advanced-dashboards-for-filament';
     }
 
     public function register(Panel $panel): void

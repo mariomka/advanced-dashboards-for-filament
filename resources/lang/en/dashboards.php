@@ -1,6 +1,6 @@
 <?php
 
-// translations for Mariomka/FilamentDashboards
+// translations for Mariomka/AdvancedDashboardsForFilament
 return [
     //
 ];

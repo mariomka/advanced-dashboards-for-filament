@@ -1,15 +1,15 @@
 {
-    "name": "mariomka/filament-dashboards",
-    "description": "Dashboard with filters for Filament",
+    "name": "mariomka/advanced-dashboards-for-filament",
+    "description": "Advanced Dashboards for Filament",
     "keywords": [
         "mariomka",
         "laravel",
-        "filament-dashboards"
+        "advanced-dashboards-for-filament"
     ],
-    "homepage": "https://github.com/mariomka/filament-dashboards",
+    "homepage": "https://github.com/mariomka/advanced-dashboards-for-filament",
     "support": {
-        "issues": "https://github.com/mariomka/filament-dashboards/issues",
-        "source": "https://github.com/mariomka/filament-dashboards"
+        "issues": "https://github.com/mariomka/advanced-dashboards-for-filament/issues",
+        "source": "https://github.com/mariomka/advanced-dashboards-for-filament"
     },
     "license": "MIT",
     "authors": [
@@ -38,13 +38,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Mariomka\\FilamentDashboards\\": "src/",
-            "Mariomka\\FilamentDashboards\\Database\\Factories\\": "database/factories/"
+            "Mariomka\\AdvancedDashboardsForFilament\\": "src/",
+            "Mariomka\\AdvancedDashboardsForFilament\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Mariomka\\FilamentDashboards\\Tests\\": "tests/"
+            "Mariomka\\AdvancedDashboardsForFilament\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -64,10 +64,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Mariomka\\FilamentDashboards\\FilamentDashboardsServiceProvider"
+                "Mariomka\\AdvancedDashboardsForFilament\\AdvancedDashboardsForFilamentServiceProvider"
             ],
             "aliases": {
-                "FilamentDashboards": "Mariomka\\FilamentDashboards\\Facades\\FilamentDashboards"
+                "AdvancedDashboardsForFilament": "Mariomka\\AdvancedDashboardsForFilament\\Facades\\AdvancedDashboardsForFilament"
             }
         }
     },

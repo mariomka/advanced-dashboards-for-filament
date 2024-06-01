@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('filament_dashboards_table', function (Blueprint $table) {
+        Schema::create('advanced_dashboards_for_filament_table', function (Blueprint $table) {
             $table->id();
 
             // add fields

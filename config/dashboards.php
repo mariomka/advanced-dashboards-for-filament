@@ -1,6 +1,6 @@
 <?php
 
-// config for Mariomka/FilamentDashboards
+// config for Mariomka/AdvancedDashboardsForFilament
 return [
 
 ];

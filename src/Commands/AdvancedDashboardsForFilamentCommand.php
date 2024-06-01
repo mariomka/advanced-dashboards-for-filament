@@ -1,12 +1,12 @@
 <?php
 
-namespace Mariomka\FilamentDashboards\Commands;
+namespace Mariomka\AdvancedDashboardsForFilament\Commands;
 
 use Illuminate\Console\Command;
 
-class FilamentDashboardsCommand extends Command
+class AdvancedDashboardsForFilamentCommand extends Command
 {
-    public $signature = 'filament-dashboards';
+    public $signature = 'advanced-dashboards-for-filament';
 
     public $description = 'My command';
 

@@ -46,5 +46,5 @@ const defaultOptions = {
 compile({
     ...defaultOptions,
     entryPoints: ['./resources/js/index.js'],
-    outfile: './resources/dist/filament-dashboards.js',
+    outfile: './resources/dist/advanced-dashboards-for-filament.js',
 })

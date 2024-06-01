@@ -1,6 +1,6 @@
 <?php
 
-namespace Mariomka\FilamentDashboards;
+namespace Mariomka\AdvancedDashboardsForFilament;
 
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
@@ -10,17 +10,17 @@ use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
-use Mariomka\FilamentDashboards\Commands\FilamentDashboardsCommand;
-use Mariomka\FilamentDashboards\Testing\TestsFilamentDashboards;
+use Mariomka\AdvancedDashboardsForFilament\Commands\AdvancedDashboardsForFilamentCommand;
+use Mariomka\AdvancedDashboardsForFilament\Testing\TestsAdvancedDashboardsForFilament;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentDashboardsServiceProvider extends PackageServiceProvider
+class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'filament-dashboards';
+    public static string $name = 'advanced-dashboards-for-filament';
 
-    public static string $viewNamespace = 'filament-dashboards';
+    public static string $viewNamespace = 'advanced-dashboards-for-filament';
 
     public function configurePackage(Package $package): void
     {
@@ -36,7 +36,7 @@ class FilamentDashboardsServiceProvider extends PackageServiceProvider
                     ->publishConfigFile()
                     ->publishMigrations()
                     ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub('mariomka/filament-dashboards');
+                    ->askToStarRepoOnGitHub('mariomka/advanced-dashboards-for-filament');
             });
 
         $configFileName = $package->shortName();
@@ -82,18 +82,18 @@ class FilamentDashboardsServiceProvider extends PackageServiceProvider
         if (app()->runningInConsole()) {
             foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
-                    $file->getRealPath() => base_path("stubs/filament-dashboards/{$file->getFilename()}"),
-                ], 'filament-dashboards-stubs');
+                    $file->getRealPath() => base_path("stubs/advanced-dashboards-for-filament/{$file->getFilename()}"),
+                ], 'advanced-dashboards-for-filament-stubs');
             }
         }
 
         // Testing
-        Testable::mixin(new TestsFilamentDashboards());
+        Testable::mixin(new TestsAdvancedDashboardsForFilament());
     }
 
     protected function getAssetPackageName(): ?string
     {
-        return 'mariomka/filament-dashboards';
+        return 'mariomka/advanced-dashboards-for-filament';
     }
 
     /**
@@ -102,9 +102,9 @@ class FilamentDashboardsServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('filament-dashboards', __DIR__ . '/../resources/dist/components/filament-dashboards.js'),
-            Css::make('filament-dashboards-styles', __DIR__ . '/../resources/dist/filament-dashboards.css'),
-            Js::make('filament-dashboards-scripts', __DIR__ . '/../resources/dist/filament-dashboards.js'),
+            // AlpineComponent::make('advanced-dashboards-for-filament', __DIR__ . '/../resources/dist/components/advanced-dashboards-for-filament.js'),
+            Css::make('advanced-dashboards-for-filament-styles', __DIR__ . '/../resources/dist/advanced-dashboards-for-filament.css'),
+            Js::make('advanced-dashboards-for-filament-scripts', __DIR__ . '/../resources/dist/advanced-dashboards-for-filament.js'),
         ];
     }
 
@@ -114,7 +114,7 @@ class FilamentDashboardsServiceProvider extends PackageServiceProvider
     protected function getCommands(): array
     {
         return [
-            FilamentDashboardsCommand::class,
+            AdvancedDashboardsForFilamentCommand::class,
         ];
     }
 
@@ -148,7 +148,7 @@ class FilamentDashboardsServiceProvider extends PackageServiceProvider
     protected function getMigrations(): array
     {
         return [
-            'create_filament-dashboards_table',
+            'create_advanced-dashboards-for-filament_table',
         ];
     }
 }
