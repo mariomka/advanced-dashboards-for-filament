@@ -18,6 +18,6 @@
                 ...$this->getWidgetData(),
             ]
         "
-        :widgets="$this->getQuestions()"
+        :questions="$this->getQuestions()"
     />
 </x-filament-panels::page>
