@@ -56,7 +56,7 @@ abstract class AdvancedDashboard extends Page
     public function filtersForm(Form $form): Form
     {
         return $form->schema(
-            tap($this->filtersSchema(), fn(array $schema) => $this->showFilters = filled($schema))
+            tap($this->filtersSchema(), fn (array $schema) => $this->showFilters = filled($schema))
         );
     }
 
