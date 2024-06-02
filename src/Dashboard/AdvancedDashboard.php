@@ -14,9 +14,16 @@ abstract class AdvancedDashboard extends Page
 
     protected static string $view = 'advanced-dashboards-for-filament::dashboard.dashboard';
 
+    protected bool $showFilters = false;
+
     public function getRowHeight(): string
     {
         return '120px';
+    }
+
+    public function getShowFilters(): bool
+    {
+        return $this->showFilters;
     }
 
     /**
@@ -33,14 +40,29 @@ abstract class AdvancedDashboard extends Page
             return $this->getForm('filtersForm');
         }
 
-        return $this->filtersForm($this->makeForm()
-            ->columns([
-                'md' => 2,
-                'xl' => 3,
-                '2xl' => 4,
-            ])
-            ->statePath('filters')
-            ->debounce());
+        return $this->filtersForm(
+            $this
+                ->makeForm()
+                ->columns([
+                    'md' => 2,
+                    'xl' => 3,
+                    '2xl' => 4,
+                ])
+                ->statePath('filters')
+                ->debounce()
+        );
+    }
+
+    public function filtersForm(Form $form): Form
+    {
+        return $form->schema(
+            tap($this->filtersSchema(), fn(array $schema) => $this->showFilters = filled($schema))
+        );
+    }
+
+    protected function filtersSchema(): array
+    {
+        return [];
     }
 
     /**
