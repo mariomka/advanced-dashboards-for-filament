@@ -22,14 +22,14 @@ abstract class AdvancedDashboard extends Page
     /**
      * @return int | string | array<string, int | string | null>
      */
-    public function getColumns(): int|string|array
+    public function getColumns(): int | string | array
     {
         return 6;
     }
 
     public function getFiltersForm(): Form
     {
-        if ((!$this->isCachingForms) && $this->hasCachedForm('filtersForm')) {
+        if ((! $this->isCachingForms) && $this->hasCachedForm('filtersForm')) {
             return $this->getForm('filtersForm');
         }
 

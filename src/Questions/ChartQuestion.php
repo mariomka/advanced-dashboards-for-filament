@@ -15,14 +15,15 @@ abstract class ChartQuestion extends ChartWidget
 
     protected static ?string $pollingInterval = null;
 
-    protected function getOptions(): array|RawJs|null
+    protected function getOptions(): array | RawJs | null
     {
-        return RawJs::make(<<<JS
-        {
-            maintainAspectRatio: false,
-        }
-    JS
-        );
+        $options = <<<'JS'
+{
+    maintainAspectRatio: false,
+}
+JS;
+
+        return RawJs::make($options);
     }
 
     public function placeholder(): View
