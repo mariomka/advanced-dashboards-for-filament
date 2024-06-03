@@ -13,8 +13,10 @@ use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Schema\Blueprint;
 use Livewire\LivewireServiceProvider;
 use Mariomka\AdvancedDashboardsForFilament\AdvancedDashboardsForFilamentServiceProvider;
+use Mariomka\AdvancedDashboardsForFilament\Tests\Providers\TestPanelProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 
@@ -25,11 +27,13 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Mariomka\\AdvancedDashboardsForFilament\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Mariomka\\AdvancedDashboardsForFilament\\Tests\\Factories\\' . class_basename($modelName) . 'Factory'
         );
+
+        $this->setUpDatabase($this->app);
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             ActionsServiceProvider::class,
@@ -45,16 +49,22 @@ class TestCase extends Orchestra
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
             AdvancedDashboardsForFilamentServiceProvider::class,
+            TestPanelProvider::class,
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app): void
     {
         config()->set('database.default', 'testing');
+    }
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_advanced-dashboards-for-filament_table.php.stub';
-        $migration->up();
-        */
+    protected function setUpDatabase($app): void
+    {
+        $app['db']->connection()->getSchemaBuilder()->create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('password');
+        });
     }
 }
