@@ -8,6 +8,8 @@ use Mariomka\AdvancedDashboardsForFilament\Tests\Questions\TestChartQuestion;
 
 class TestDashboard extends AdvancedDashboard
 {
+    protected static ?string $title = 'Test Dashboard';
+
     public function getQuestions(): array
     {
         return [
