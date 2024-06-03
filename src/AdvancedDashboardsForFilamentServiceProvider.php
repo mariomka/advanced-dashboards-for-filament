@@ -97,7 +97,7 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
             // AlpineComponent::make('advanced-dashboards-for-filament', __DIR__ . '/../resources/dist/components/advanced-dashboards-for-filament.js'),
             Css::make('advanced-dashboards-for-filament-styles', __DIR__ . '/../resources/dist/advanced-dashboards-for-filament.css')
                 ->loadedOnRequest(),
-            Js::make('advanced-dashboards-for-filament-scripts', __DIR__ . '/../resources/dist/advanced-dashboards-for-filament.js'),
+            // Js::make('advanced-dashboards-for-filament-scripts', __DIR__ . '/../resources/dist/advanced-dashboards-for-filament.js'),
         ];
     }
 
