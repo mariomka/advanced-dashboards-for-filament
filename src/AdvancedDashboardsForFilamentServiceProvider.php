@@ -2,15 +2,18 @@
 
 namespace Mariomka\AdvancedDashboardsForFilament;
 
-use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
+use Filament\Support\Facades\FilamentView;
+use Filament\View\PanelsRenderHook;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\View\View;
 use Livewire\Features\SupportTesting\Testable;
 use Mariomka\AdvancedDashboardsForFilament\Commands\AdvancedDashboardsForFilamentCommand;
+use Mariomka\AdvancedDashboardsForFilament\Dashboard\AdvancedDashboard;
 use Mariomka\AdvancedDashboardsForFilament\Testing\TestsAdvancedDashboardsForFilament;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
@@ -77,6 +80,12 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
 
         // Icon Registration
         FilamentIcon::register($this->getIcons());
+
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::PAGE_HEADER_ACTIONS_BEFORE,
+            fn (): View => view('advanced-dashboards-for-filament::dashboard.header-loading-indicator'),
+            scopes: AdvancedDashboard::class,
+        );
 
         // Handle Stubs
         if (app()->runningInConsole()) {
