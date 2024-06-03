@@ -73,7 +73,7 @@ abstract class AdvancedDashboard extends Page
     }
 
     /**
-     * @return  array<string, int | string | null> | int | string | null
+     * @return array<string, int | string | null> | int | string | null
      */
     protected function filtersColumns(): array | int | string | null
     {

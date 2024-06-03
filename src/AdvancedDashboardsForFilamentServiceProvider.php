@@ -71,7 +71,7 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
             scopes: AdvancedDashboard::class,
         );
 
-        if (app()->runningInConsole() && file_exists(__DIR__.'/../stubs/')) {
+        if (app()->runningInConsole() && file_exists(__DIR__ . '/../stubs/')) {
             foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
                     $file->getRealPath() => base_path("stubs/advanced-dashboards-for-filament/{$file->getFilename()}"),
