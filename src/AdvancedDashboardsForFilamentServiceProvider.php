@@ -12,10 +12,8 @@ use Filament\View\PanelsRenderHook;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\View;
 use Livewire\Features\SupportTesting\Testable;
-use Mariomka\AdvancedDashboardsForFilament\Commands\AdvancedDashboardsForFilamentCommand;
 use Mariomka\AdvancedDashboardsForFilament\Dashboard\AdvancedDashboard;
 use Mariomka\AdvancedDashboardsForFilament\Testing\TestsAdvancedDashboardsForFilament;
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -27,20 +25,8 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
 
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package->name(static::$name)
-            ->hasCommands($this->getCommands())
-            ->hasInstallCommand(function (InstallCommand $command) {
-                $command
-                    ->publishConfigFile()
-                    ->publishMigrations()
-                    ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub('mariomka/advanced-dashboards-for-filament');
-            });
+            ->hasCommands($this->getCommands());
 
         $configFileName = $package->shortName();
 
@@ -67,7 +53,6 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
 
     public function packageBooted(): void
     {
-        // Asset Registration
         FilamentAsset::register(
             $this->getAssets(),
             $this->getAssetPackageName()
@@ -78,7 +63,6 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
             $this->getAssetPackageName()
         );
 
-        // Icon Registration
         FilamentIcon::register($this->getIcons());
 
         FilamentView::registerRenderHook(
@@ -87,8 +71,7 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
             scopes: AdvancedDashboard::class,
         );
 
-        // Handle Stubs
-        if (app()->runningInConsole()) {
+        if (app()->runningInConsole() && file_exists(__DIR__.'/../stubs/')) {
             foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
                     $file->getRealPath() => base_path("stubs/advanced-dashboards-for-filament/{$file->getFilename()}"),
@@ -122,9 +105,7 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
      */
     protected function getCommands(): array
     {
-        return [
-            AdvancedDashboardsForFilamentCommand::class,
-        ];
+        return [];
     }
 
     /**
@@ -156,8 +137,6 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
      */
     protected function getMigrations(): array
     {
-        return [
-            'create_advanced-dashboards-for-filament_table',
-        ];
+        return [];
     }
 }
