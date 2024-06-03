@@ -12,7 +12,7 @@
 
 <x-filament::grid
     :is-grid="true"
-    :default="$columns['default'] ?? 6"
+    :default="$columns['default'] ?? 3"
     :sm="$columns['sm'] ?? null"
     :md="$columns['md'] ?? null"
     :lg="$columns['lg'] ?? ($columns ? (is_array($columns) ? null : $columns) : 6)"
