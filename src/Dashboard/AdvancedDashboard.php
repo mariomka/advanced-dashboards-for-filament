@@ -25,7 +25,7 @@ abstract class AdvancedDashboard extends Page
 
     public function getRowHeight(): string
     {
-        return '120px';
+        return config('advanced-dashboards-for-filament.grid.row_height');
     }
 
     /**
@@ -33,7 +33,7 @@ abstract class AdvancedDashboard extends Page
      */
     public function getColumns(): int | string | array
     {
-        return 6;
+        return config('advanced-dashboards-for-filament.grid.columns');
     }
 
     protected function getHeaderActions(): array
@@ -56,11 +56,7 @@ abstract class AdvancedDashboard extends Page
         return $this->filtersForm(
             $this
                 ->makeForm()
-                ->columns([
-                    'md' => 2,
-                    'xl' => 3,
-                    '2xl' => 4,
-                ])
+                ->columns($this->filtersColumns())
                 ->statePath('filters')
                 ->debounce()
         );
@@ -74,6 +70,14 @@ abstract class AdvancedDashboard extends Page
     protected function filtersSchema(): array
     {
         return [];
+    }
+
+    /**
+     * @return  array<string, int | string | null> | int | string | null
+     */
+    protected function filtersColumns(): array | int | string | null
+    {
+        return config('advanced-dashboards-for-filament.filters.columns');
     }
 
     public function showFiltersForm(): bool

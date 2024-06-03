@@ -5,15 +5,17 @@ namespace Mariomka\AdvancedDashboardsForFilament\Questions;
 class QuestionConfiguration
 {
     /**
-     * @param  int | string | array<string, int | string | null>  $cols
-     * @param  int | string | array<string, int | string | null>  $rows
+     * @param  int | string | array<string, int | string | null> | null  $cols
+     * @param  int | string | array<string, int | string | null> | null  $rows
      */
     public function __construct(
         readonly public string $question,
         protected array $properties = [],
-        protected int | string | array $cols = 3,
-        protected int | string | array $rows = 3,
+        protected int | string | array | null $cols = null,
+        protected int | string | array | null $rows = null,
     ) {
+        $this->cols ??= config('advanced-dashboards-for-filament.questions.cols');
+        $this->rows ??= config('advanced-dashboards-for-filament.questions.rows');
     }
 
     /**
