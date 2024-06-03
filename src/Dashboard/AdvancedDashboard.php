@@ -31,10 +31,7 @@ abstract class AdvancedDashboard extends Page
      */
     public function getColumns(): int | string | array
     {
-        return [
-            'default' => 3,
-            'md' => 6,
-        ];
+        return 6;
     }
 
     public function getFiltersForm(): Form

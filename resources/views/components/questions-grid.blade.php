@@ -12,10 +12,10 @@
 
 <x-filament::grid
     :is-grid="true"
-    :default="$columns['default'] ?? 3"
+    :default="$columns['default'] ?? ($columns ? (is_array($columns) ? null : $columns) : 3)"
     :sm="$columns['sm'] ?? null"
     :md="$columns['md'] ?? null"
-    :lg="$columns['lg'] ?? ($columns ? (is_array($columns) ? null : $columns) : 6)"
+    :lg="$columns['lg'] ?? null"
     :xl="$columns['xl'] ?? null"
     :two-xl="$columns['2xl'] ?? null"
     :attributes="\Filament\Support\prepare_inherited_attributes($attributes)->class('gap-6')"
@@ -36,18 +36,18 @@
             $question = $normalizeQuestionConfiguration($question);
 
             $cols = $question->getCols();
-            $colsDefault = $cols['default'] ?? 3;
+            $colsDefault = $cols['default'] ?? ($cols ? (is_array($cols) ? null : $cols) : 3);
             $colsSm = $cols['sm'] ?? null;
             $colsMd = $cols['md'] ?? null;
-            $colsLg = $cols['lg'] ?? ($cols ? (is_array($cols) ? null : $cols) : 3);
+            $colsLg = $cols['lg'] ?? null;
             $colsXl = $cols['xl'] ?? null;
             $cols2xl = $cols['2xl'] ?? null;
 
             $rows = $question->getRows();
-            $rowsDefault = $rows['default'] ?? 3;
+            $rowsDefault = $rows['default'] ?? ($rows ? (is_array($rows) ? null : $rows) : 3);
             $rowsSm = $rows['sm'] ?? null;
             $rowsMd = $rows['md'] ?? null;
-            $rowsLg = $rows['lg'] ?? ($rows ? (is_array($rows) ? null : $rows) : 3);
+            $rowsLg = $rows['lg'] ?? null;
             $rowsXl = $rows['xl'] ?? null;
             $rows2xl = $rows['2xl'] ?? null;
         @endphp
