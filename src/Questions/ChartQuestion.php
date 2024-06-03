@@ -17,13 +17,9 @@ abstract class ChartQuestion extends ChartWidget
 
     protected function getOptions(): array | RawJs | null
     {
-        $options = <<<'JS'
-{
-    maintainAspectRatio: false,
-}
-JS;
-
-        return RawJs::make($options);
+        return [
+            'maintainAspectRatio' => false,
+        ];
     }
 
     public function placeholder(): View
