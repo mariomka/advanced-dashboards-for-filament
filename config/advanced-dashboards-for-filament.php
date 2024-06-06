@@ -11,10 +11,10 @@ return [
     'grid' => [
         'row_height' => '120px',
         'columns' => 6,
-
     ],
     'questions' => [
         'cols' => 3,
         'rows' => 3,
     ],
+    'load_css' => true,
 ];

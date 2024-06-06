@@ -15,6 +15,13 @@ abstract class AdvancedDashboard extends Page
 
     protected static string $view = 'advanced-dashboards-for-filament::dashboard.advanced-dashboard';
 
+    protected function getViewData(): array
+    {
+        return [
+            'loadCss' => config('advanced-dashboards-for-filament.load_css'),
+        ];
+    }
+
     public function getRenderHookScopes(): array
     {
         return [

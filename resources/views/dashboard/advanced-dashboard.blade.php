@@ -1,7 +1,8 @@
+@if($loadCss)
 <div
-    x-data="{}"
     x-load-css="[@js(\Filament\Support\Facades\FilamentAsset::getStyleHref('advanced-dashboards-for-filament-styles', package: 'mariomka/advanced-dashboards-for-filament'))]"
 >
+@endif
     <x-filament-panels::page class="adffi-advanced-dashboard-page">
         @if ($this->showFiltersForm())
             <form wire:submit="$refresh">
@@ -21,4 +22,7 @@
             :questions="$this->getQuestions()"
         />
     </x-filament-panels::page>
+@if($loadCss)
 </div>
+@endif
+
