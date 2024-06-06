@@ -13,7 +13,7 @@ abstract class AdvancedDashboard extends Page
 {
     use HasFiltersForm;
 
-    protected static string $view = 'advanced-dashboards-for-filament::dashboard.dashboard';
+    protected static string $view = 'advanced-dashboards-for-filament::dashboard.advanced-dashboard';
 
     public function getRenderHookScopes(): array
     {

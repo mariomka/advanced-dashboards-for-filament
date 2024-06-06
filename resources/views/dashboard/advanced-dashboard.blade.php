@@ -2,7 +2,7 @@
     x-data="{}"
     x-load-css="[@js(\Filament\Support\Facades\FilamentAsset::getStyleHref('advanced-dashboards-for-filament-styles', package: 'mariomka/advanced-dashboards-for-filament'))]"
 >
-    <x-filament-panels::page class="fi-dashboard-page">
+    <x-filament-panels::page class="adffi-advanced-dashboard-page">
         @if ($this->showFiltersForm())
             <form wire:submit="$refresh">
                 {{ $this->filtersForm }}

@@ -18,7 +18,7 @@
     :lg="$columns['lg'] ?? null"
     :xl="$columns['xl'] ?? null"
     :two-xl="$columns['2xl'] ?? null"
-    :attributes="\Filament\Support\prepare_inherited_attributes($attributes)->class('gap-6')"
+    :attributes="\Filament\Support\prepare_inherited_attributes($attributes)->class('adffi-widgets gap-6')"
     :style="'grid-auto-rows: ' . $rowHeight"
 >
     @php
