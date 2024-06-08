@@ -3,6 +3,7 @@
 namespace Mariomka\AdvancedDashboardsForFilament\Questions;
 
 use Filament\Support\Concerns\CanBeLazy;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
@@ -17,6 +18,10 @@ abstract class Question extends Component
      */
     protected static string $view;
 
+    protected static ?string $heading = null;
+
+    protected static ?string $description = null;
+
     /**
      * @return array<string, mixed>
      */
@@ -28,6 +33,16 @@ abstract class Question extends Component
     public static function isDiscovered(): bool
     {
         return static::$isDiscovered;
+    }
+
+    public function getHeading(): string | Htmlable | null
+    {
+        return static::$heading;
+    }
+
+    public function getDescription(): string | Htmlable | null
+    {
+        return static::$description;
     }
 
     public function render(): View
