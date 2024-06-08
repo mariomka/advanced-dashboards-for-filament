@@ -1,9 +1,6 @@
 .adffi-table-question .fi-ta {
     @apply h-full;
 }
-.adffi-table-question .fi-ta-header {
-    @apply p-4;
-}
 .adffi-table-question .fi-ta-ctn {
     @apply h-full flex flex-col;
 }
