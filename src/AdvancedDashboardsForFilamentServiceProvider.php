@@ -2,9 +2,9 @@
 
 namespace Mariomka\AdvancedDashboardsForFilament;
 
+use Filament\Panel;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Support\Facades\FilamentView;
@@ -13,6 +13,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\View;
 use Livewire\Features\SupportTesting\Testable;
 use Mariomka\AdvancedDashboardsForFilament\Dashboard\AdvancedDashboard;
+use Mariomka\AdvancedDashboardsForFilament\Questions\Question;
 use Mariomka\AdvancedDashboardsForFilament\Testing\TestsAdvancedDashboardsForFilament;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -49,6 +50,22 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
 
     public function packageRegistered(): void
     {
+        Panel::macro('discoverQuestions', function (string $in, string $for): static {
+            if ($this->hasCachedComponents()) {
+                return $this;
+            }
+
+            $questions = [];
+
+            $this->discoverComponents(
+                Question::class,
+                $questions,
+                directory: $in,
+                namespace: $for,
+            );
+
+            return $this;
+        });
     }
 
     public function packageBooted(): void
