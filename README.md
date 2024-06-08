@@ -15,6 +15,32 @@ You can install the package via composer:
 composer require mariomka/advanced-dashboards-for-filament
 ```
 
+Then you need to update your Filament panel configuration:
+
+```php
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        // other configurations
+        ->discoverQuestions(in: app_path('Filament/Questions'), for: 'App\\Filament\\Questions')
+        // other configurations
+}
+```
+
+If you're building a [custom theme](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme), you need import a css file in your `resources/css/filament/{panel}/theme.css` file:
+
+```css
+@import '/vendor/mariomka/advanced-dashboards-for-filament/resources/css/overwrites.css';
+```
+
+And disable load the CSS in your `config/advanced-dashboards-for-filament.php` file:
+
+```php
+[
+    'load_css' => false,
+];
+```
+
 Optionally, you can publish the config file with:
 
 ```bash
