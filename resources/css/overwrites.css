@@ -7,3 +7,11 @@
 .adffi-table-question .fi-ta-content {
     @apply flex-1;
 }
+
+.adffi-stat-question .fi-wi-stats-overview-stat {
+    @apply h-full flex items-center;
+    container-type: size;
+}
+.adffi-stat-question .fi-wi-stats-overview-stat-value {
+      font-size: max(10cqw, 1.875rem);
+}
