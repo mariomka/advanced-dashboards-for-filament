@@ -32,7 +32,7 @@
             @endif
         </header>
     @endif
-    <div class="adffi-question-content px-4 py-6">
+    <div class="adffi-question-content px-4 py-6 flex-1">
         {{ $slot }}
     </div>
 </div>

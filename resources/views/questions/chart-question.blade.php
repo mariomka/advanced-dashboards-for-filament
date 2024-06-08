@@ -25,7 +25,7 @@
                 })"
         x-ignore
         @class([
-            'flex-1',
+            'h-full',
             match ($color) {
                 'gray' => null,
                 default => 'fi-color-custom',
