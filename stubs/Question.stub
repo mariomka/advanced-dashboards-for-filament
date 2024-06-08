@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use Mariomka\AdvancedDashboardsForFilament\Questions\Question;
+
+class {{ class }} extends Question
+{
+    protected static string $view = '{{ view }}';
+}

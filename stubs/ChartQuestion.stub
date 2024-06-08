@@ -1,0 +1,22 @@
+<?php
+
+namespace {{ namespace }};
+
+use Mariomka\AdvancedDashboardsForFilament\Questions\ChartQuestion;
+
+class {{ class }} extends ChartQuestion
+{
+    protected static ?string $heading = 'Chart';
+
+    protected function getData(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    protected function getType(): string
+    {
+        return '{{ type }}';
+    }
+}

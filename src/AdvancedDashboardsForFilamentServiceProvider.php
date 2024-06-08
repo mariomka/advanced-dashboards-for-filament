@@ -12,6 +12,7 @@ use Filament\View\PanelsRenderHook;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\View;
 use Livewire\Features\SupportTesting\Testable;
+use Mariomka\AdvancedDashboardsForFilament\Commands\MakeQuestionCommand;
 use Mariomka\AdvancedDashboardsForFilament\Dashboard\AdvancedDashboard;
 use Mariomka\AdvancedDashboardsForFilament\Questions\Question;
 use Mariomka\AdvancedDashboardsForFilament\Testing\TestsAdvancedDashboardsForFilament;
@@ -55,6 +56,9 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
                 return $this;
             }
 
+            $this->questionsDirectories[] = $in;
+            $this->questionsNamespaces[] = $for;
+
             $questions = [];
 
             $this->discoverComponents(
@@ -65,6 +69,14 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
             );
 
             return $this;
+        });
+
+        Panel::macro('getQuestionDirectories', function (): array {
+            return $this->questionDirectories ?? [];
+        });
+
+        Panel::macro('getQuestionNamespaces', function (): array {
+            return $this->questionNamespaces ?? [];
         });
     }
 
@@ -123,7 +135,9 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
      */
     protected function getCommands(): array
     {
-        return [];
+        return [
+            MakeQuestionCommand::class,
+        ];
     }
 
     /**
