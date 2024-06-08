@@ -10,9 +10,6 @@
 @endphp
 
 <div
-    @if ($pollingInterval = $this->getPollingInterval())
-        wire:poll.{{ $pollingInterval }}="updateChartData"
-    @endif
     class="adffi-chart-question h-full flex flex-col p-4 rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10"
 >
     @if($hasHeading)
@@ -52,13 +49,7 @@
             is_string($color) ? "fi-color-{$color}" : null,
         ])
     >
-        <canvas
-            x-ref="canvas"
-            @if ($maxHeight = $this->getMaxHeight())
-                style="max-height: {{ $maxHeight }}"
-            @endif
-            class="h-full"
-        ></canvas>
+        <canvas x-ref="canvas" class="h-full"></canvas>
 
         <span
             x-ref="backgroundColorElement"

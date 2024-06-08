@@ -8,6 +8,7 @@
 ])
 @php
     use Mariomka\AdvancedDashboardsForFilament\Questions\QuestionConfiguration;
+    use Mariomka\AdvancedDashboardsForFilament\Questions\Question;
 @endphp
 
 <x-filament::grid
@@ -27,15 +28,16 @@
                 return $question;
             }
 
-            return new QuestionConfiguration($question);
+            /** @var class-string<Question> $question */
+            return $question::make();
         };
     @endphp
 
     @foreach ($questions as $questionKey => $question)
         @php
-            $question = $normalizeQuestionConfiguration($question);
+            $questionConfiguration = $normalizeQuestionConfiguration($question);
 
-            $cols = $question->getCols();
+            $cols = $questionConfiguration->getCols();
             $colsDefault = $cols['default'] ?? ($cols ? (is_array($cols) ? null : $cols) : 3);
             $colsSm = $cols['sm'] ?? null;
             $colsMd = $cols['md'] ?? null;
@@ -43,7 +45,7 @@
             $colsXl = $cols['xl'] ?? null;
             $cols2xl = $cols['2xl'] ?? null;
 
-            $rows = $question->getRows();
+            $rows = $questionConfiguration->getRows();
             $rowsDefault = $rows['default'] ?? ($rows ? (is_array($rows) ? null : $rows) : 3);
             $rowsSm = $rows['sm'] ?? null;
             $rowsMd = $rows['md'] ?? null;
@@ -86,9 +88,9 @@
         }}
         >
             @livewire(
-                $question->question,
-                [...$question->question::getDefaultProperties(), ...$question->getProperties(), ...$data],
-                key("{$question->question}-{$questionKey}"),
+                $questionConfiguration->question,
+                [...$questionConfiguration->question::getDefaultProperties(), ...$questionConfiguration->getProperties(), ...$data],
+                key("{$questionConfiguration->question}-{$questionKey}"),
             )
         </div>
     @endforeach
