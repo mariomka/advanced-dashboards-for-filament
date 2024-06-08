@@ -47,7 +47,7 @@
                 \Filament\Support\get_color_css_variables(
                     $color,
                     shades: [50, 400],
-                    alias: 'widgets::chart-widget.background',
+                    alias: 'adffi-questions::chart-widget.background',
                 ) => $color !== 'gray',
             ])
         ></span>
@@ -64,7 +64,7 @@
                 \Filament\Support\get_color_css_variables(
                     $color,
                     shades: [400, 500],
-                    alias: 'widgets::chart-widget.border',
+                    alias: 'adffi-questions::chart-widget.border',
                 ) => $color !== 'gray',
             ])
         ></span>
