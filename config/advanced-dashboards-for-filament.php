@@ -9,7 +9,7 @@ return [
         ],
     ],
     'grid' => [
-        'row_height' => '120px',
+        'row_height' => '140px',
         'columns' => 6,
     ],
     'questions' => [

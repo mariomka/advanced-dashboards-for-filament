@@ -2,7 +2,7 @@
     'columns' => [
         'lg' => 6,
     ],
-    'rowHeight' => '120px',
+    'rowHeight' => '140px',
     'data' => [],
     'questions' => [],
 ])
