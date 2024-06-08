@@ -1,0 +1,26 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Access to an undefined property Filament\\\\Panel\\:\\:\\$questionsDirectories\\.$#"
+			count: 1
+			path: src/AdvancedDashboardsForFilamentServiceProvider.php
+
+		-
+			message: "#^Access to an undefined property Filament\\\\Panel\\:\\:\\$questionsNamespaces\\.$#"
+			count: 1
+			path: src/AdvancedDashboardsForFilamentServiceProvider.php
+
+		-
+			message: "#^Call to protected method discoverComponents\\(\\) of class Filament\\\\Panel\\.$#"
+			count: 1
+			path: src/AdvancedDashboardsForFilamentServiceProvider.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Panel\\:\\:getQuestionDirectories\\(\\)\\.$#"
+			count: 1
+			path: src/Commands/MakeQuestionCommand.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Panel\\:\\:getQuestionNamespaces\\(\\)\\.$#"
+			count: 1
+			path: src/Commands/MakeQuestionCommand.php

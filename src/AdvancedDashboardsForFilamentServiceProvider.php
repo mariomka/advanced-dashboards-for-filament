@@ -51,7 +51,8 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
 
     public function packageRegistered(): void
     {
-        Panel::macro('discoverQuestions', function (string $in, string $for): static {
+        Panel::macro('discoverQuestions', function (string $in, string $for): Panel {
+            /** @var Panel $this */
             if ($this->hasCachedComponents()) {
                 return $this;
             }
