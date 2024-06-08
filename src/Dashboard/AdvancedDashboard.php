@@ -15,6 +15,8 @@ abstract class AdvancedDashboard extends Page
 
     protected static string $view = 'advanced-dashboards-for-filament::dashboard.advanced-dashboard';
 
+    protected static ?string $pollingInterval = null;
+
     protected function getViewData(): array
     {
         return [
@@ -28,6 +30,11 @@ abstract class AdvancedDashboard extends Page
             ...parent::getRenderHookScopes(),
             self::class,
         ];
+    }
+
+    protected function getPollingInterval(): ?string
+    {
+        return static::$pollingInterval;
     }
 
     public function getRowHeight(): string
