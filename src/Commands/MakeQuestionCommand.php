@@ -38,9 +38,6 @@ class MakeQuestionCommand extends Command
             (string) str($question)->beforeLast('\\') :
             '';
 
-        $resource = null;
-        $resourceClass = null;
-
         $type = match (true) {
             $this->option('chart') => 'Chart',
             default => select(
@@ -76,10 +73,7 @@ class MakeQuestionCommand extends Command
             }
         }
 
-        $path = null;
         $namespace = null;
-        $resourcePath = null;
-        $resourceNamespace = null;
 
         if (! $panel) {
             $namespace = config('livewire.class_namespace');
@@ -100,7 +94,7 @@ class MakeQuestionCommand extends Command
         }
 
         $view = str($question)->prepend(
-            (string) str($resource === null ? ($panel ? "{$namespace}\\" : 'livewire\\') : "{$resourceNamespace}\\{$resource}\\questions\\")
+            (string) str(($panel ? "{$namespace}\\" : 'livewire\\'))
                 ->replaceFirst('App\\', '')
         )
             ->replace('\\', '/')
@@ -110,7 +104,7 @@ class MakeQuestionCommand extends Command
 
         $path = (string) str($question)
             ->prepend('/')
-            ->prepend($resource === null ? $path : "{$resourcePath}\\{$resource}\\Questions\\")
+            ->prepend($path)
             ->replace('\\', '/')
             ->replace('//', '/')
             ->append('.php');
