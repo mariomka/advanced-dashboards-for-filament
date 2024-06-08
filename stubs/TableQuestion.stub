@@ -1,0 +1,22 @@
+<?php
+
+namespace {{ namespace }};
+
+use Filament\Tables\Table;
+use Mariomka\AdvancedDashboardsForFilament\Questions\TableQuestion;
+
+class {{ class }} extends TableQuestion
+{
+    protected static ?string $heading = 'Table';
+
+    public function table(Table $table): Table
+    {
+        return $table
+            ->query(
+                // ...
+            )
+            ->columns([
+                // ...
+            ]);
+    }
+}

@@ -20,7 +20,7 @@ class MakeQuestionCommand extends Command
 
     protected $description = 'Create a new Advanced Dashboard For Filament question class';
 
-    protected $signature = 'make:filament-question {name?} {--C|chart} {--panel=} {--F|force}';
+    protected $signature = 'make:filament-question {name?} {--C|chart} {--S|stat} {--T|table}  {--panel=} {--F|force}';
 
     public function handle(): int
     {
@@ -40,9 +40,11 @@ class MakeQuestionCommand extends Command
 
         $type = match (true) {
             $this->option('chart') => 'Chart',
+            $this->option('stat') => 'Stat',
+            $this->option('table') => 'Table',
             default => select(
                 label: 'What type of question do you want to create?',
-                options: ['Chart', 'Custom'],
+                options: ['Chart', 'Stat', 'Table', 'Custom'],
             ),
         };
 
@@ -118,7 +120,7 @@ class MakeQuestionCommand extends Command
 
         if (! $this->option('force') && $this->checkForCollision([
             $path,
-            ...($this->option('chart')) ? [] : [$viewPath],
+            ...($this->option('stat') || $this->option('chart')) ? [] : [$viewPath],
         ])) {
             return static::INVALID;
         }
@@ -151,6 +153,16 @@ class MakeQuestionCommand extends Command
                     'Scatter chart' => 'scatter',
                     default => 'line',
                 },
+            ]);
+        } elseif ($type === 'Stat') {
+            $this->copyStubToApp('StatQuestion', $path, [
+                'class' => $questionClass,
+                'namespace' => $namespace . ($questionNamespace !== '' ? "\\{$questionNamespace}" : ''),
+            ]);
+        } elseif ($type === 'Table') {
+            $this->copyStubToApp('TableQuestion', $path, [
+                'class' => $questionClass,
+                'namespace' => $namespace . ($questionNamespace !== '' ? "\\{$questionNamespace}" : ''),
             ]);
         } else {
             $this->copyStubToApp('Question', $path, [

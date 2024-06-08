@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ namespace }};
+
+use Filament\Widgets\StatsOverviewWidget\Stat;
+use Mariomka\AdvancedDashboardsForFilament\Questions\StatQuestion;
+
+class {{ class }} extends StatQuestion
+{
+    protected function getStat(): Stat
+    {
+        return Stat::make('Something', '10.5k');
+    }
+}
