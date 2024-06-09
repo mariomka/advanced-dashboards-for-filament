@@ -53,7 +53,7 @@ abstract class AdvancedDashboard extends Page
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('Refresh')
+            Action::make('refresh')
                 ->label(__('advanced-dashboards-for-filament::default.refresh'))
                 ->icon('heroicon-o-arrow-path')
                 ->iconButton()
