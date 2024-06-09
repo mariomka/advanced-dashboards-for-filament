@@ -17,6 +17,8 @@ abstract class AdvancedDashboard extends Page
 
     protected static ?string $pollingInterval = null;
 
+    protected static bool $showFullscreenButton = false;
+
     protected function getViewData(): array
     {
         return [
@@ -58,6 +60,14 @@ abstract class AdvancedDashboard extends Page
                 ->icon('heroicon-o-arrow-path')
                 ->iconButton()
                 ->action('$refresh'),
+            ...(
+                $this->showFullscreenButton() ?
+                [
+                    Action::make('toggle_enter_fullscreen')
+                        ->view('advanced-dashboards-for-filament::dashboard.toggle-fullscreen-action'),
+                ]
+                : []
+            ),
         ];
     }
 
@@ -97,6 +107,11 @@ abstract class AdvancedDashboard extends Page
     public function showFiltersForm(): bool
     {
         return filled($this->filtersSchema());
+    }
+
+    public function showFullscreenButton(): bool
+    {
+        return static::$showFullscreenButton;
     }
 
     /**

@@ -1,0 +1,22 @@
+<div>
+    <x-filament::icon-button
+        :color="$action->getColor()"
+        :icon-size="$action->getIconSize()"
+        :label="__('advanced-dashboards-for-filament::default.enter_fullscreen')"
+        x-show="!isFullscreen"
+        @click="$refs.advancedDashboard.requestFullscreen().then(() => isFullscreen = true)"
+        type="button"
+        tag="button"
+        icon="heroicon-o-arrows-pointing-out"
+    />
+    <x-filament::icon-button
+        :color="$action->getColor()"
+        :icon-size="$action->getIconSize()"
+        :label="__('advanced-dashboards-for-filament::default.exit_fullscreen')"
+        x-show="isFullscreen"
+        @click="document.exitFullscreen()"
+        type="button"
+        tag="button"
+        icon="heroicon-o-arrows-pointing-in"
+    />
+</div>

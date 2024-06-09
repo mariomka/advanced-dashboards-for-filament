@@ -1,34 +1,33 @@
-@if($loadCss)
 <div
-    x-load-css="[@js(\Filament\Support\Facades\FilamentAsset::getStyleHref('advanced-dashboards-for-filament-styles', package: 'mariomka/advanced-dashboards-for-filament'))]"
+    x-ref="advancedDashboard"
+    :class="isFullscreen ? 'px-4 md:px-6 lg:px-8' : ''"
+    class="adffi-advanced-dashboard-page"
+    x-data="{ isFullscreen: false }"
+    @fullscreenchange.window="isFullscreen = (document.fullscreenElement === $refs.advancedDashboard)"
+    @if($loadCss)
+        x-load-css="[@js(\Filament\Support\Facades\FilamentAsset::getStyleHref('advanced-dashboards-for-filament-styles', package: 'mariomka/advanced-dashboards-for-filament'))]"
+    @endif
+    @if ($pollingInterval = $this->getPollingInterval())
+        wire:poll.{{ $pollingInterval }}="$refresh"
+    @endif
 >
-@endif
-    <div
-        @if ($pollingInterval = $this->getPollingInterval())
-            wire:poll.{{ $pollingInterval }}="$refresh"
+    <x-filament-panels::page>
+        @if ($this->showFiltersForm())
+            <form wire:submit="$refresh">
+                {{ $this->filtersForm }}
+            </form>
         @endif
-    >
-        <x-filament-panels::page class="adffi-advanced-dashboard-page">
-            @if ($this->showFiltersForm())
-                <form wire:submit="$refresh">
-                    {{ $this->filtersForm }}
-                </form>
-            @endif
 
-            <x-advanced-dashboards-for-filament::questions-grid
-                :columns="$this->getColumns()"
-                :rowHeight="$this->getRowHeight()"
-                :data="
-                    [
-                        ...(property_exists($this, 'filters') ? ['filters' => $this->filters] : []),
-                        ...$this->getWidgetData(),
-                    ]
-                "
-                :questions="$this->getQuestions()"
-            />
-        </x-filament-panels::page>
-    </div>
-@if($loadCss)
+        <x-advanced-dashboards-for-filament::questions-grid
+            :columns="$this->getColumns()"
+            :rowHeight="$this->getRowHeight()"
+            :data="
+                [
+                    ...(property_exists($this, 'filters') ? ['filters' => $this->filters] : []),
+                    ...$this->getWidgetData(),
+                ]
+            "
+            :questions="$this->getQuestions()"
+        />
+    </x-filament-panels::page>
 </div>
-@endif
-
