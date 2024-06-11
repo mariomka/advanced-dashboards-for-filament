@@ -3,6 +3,7 @@
 namespace Mariomka\AdvancedDashboardsForFilament\Questions;
 
 use Filament\Support\Concerns\CanBeLazy;
+use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
@@ -10,6 +11,7 @@ use Livewire\Component;
 abstract class Question extends Component
 {
     use CanBeLazy;
+    use InteractsWithPageFilters;
 
     protected static bool $isDiscovered = true;
 

@@ -3,14 +3,11 @@
 namespace Mariomka\AdvancedDashboardsForFilament\Questions;
 
 use Filament\Support\RawJs;
-use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Locked;
 
 abstract class ChartQuestion extends Question
 {
-    use InteractsWithPageFilters;
-
     /**
      * @var array<string, mixed> | null
      */
