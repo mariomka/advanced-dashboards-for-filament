@@ -12,6 +12,7 @@ use Filament\View\PanelsRenderHook;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\View;
 use Livewire\Features\SupportTesting\Testable;
+use Mariomka\AdvancedDashboardsForFilament\Commands\MakeAdvancedDashboardCommand;
 use Mariomka\AdvancedDashboardsForFilament\Commands\MakeQuestionCommand;
 use Mariomka\AdvancedDashboardsForFilament\Dashboard\AdvancedDashboard;
 use Mariomka\AdvancedDashboardsForFilament\Questions\Question;
@@ -137,6 +138,7 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
     protected function getCommands(): array
     {
         return [
+            MakeAdvancedDashboardCommand::class,
             MakeQuestionCommand::class,
         ];
     }

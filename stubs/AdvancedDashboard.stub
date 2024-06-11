@@ -1,0 +1,24 @@
+<?php
+
+namespace {{ namespace }};
+
+{{ clusterImport }}use Mariomka\AdvancedDashboardsForFilament\Dashboard\AdvancedDashboard;
+
+class {{ class }} extends AdvancedDashboard
+{
+    protected static ?string $navigationIcon = 'heroicon-o-presentation-chart-line';{{ clusterAssignment }}
+
+    protected function filtersSchema(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public function getQuestions(): array
+    {
+        return [
+            //
+        ];
+    }
+}
