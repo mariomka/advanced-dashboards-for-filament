@@ -2,6 +2,10 @@
 
 All notable changes to `advanced-dashboards-for-filament` will be documented in this file.
 
+## v0.9.0 - 2024-06-12
+
+**Full Changelog**: https://github.com/mariomka/advanced-dashboards-for-filament/compare/v0.8.0...v0.9.0
+
 ## v0.8.0 - 2024-06-11
 
 **Full Changelog**: https://github.com/mariomka/advanced-dashboards-for-filament/compare/v0.7.0...v0.8.0
