@@ -3,7 +3,6 @@
 namespace Mariomka\AdvancedDashboardsForFilament\Questions;
 
 use Filament\Support\RawJs;
-use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Locked;
 
 abstract class ChartQuestion extends Question
@@ -85,12 +84,5 @@ abstract class ChartQuestion extends Question
     public function getColor(): string
     {
         return static::$color;
-    }
-
-    public function placeholder(): View
-    {
-        return view(
-            'advanced-dashboards-for-filament::questions.loading-question',
-        );
     }
 }

@@ -73,4 +73,11 @@ abstract class Question extends Component
 
         return $properties;
     }
+
+    public function placeholder(): View
+    {
+        return view(
+            'advanced-dashboards-for-filament::questions.loading-question',
+        );
+    }
 }
