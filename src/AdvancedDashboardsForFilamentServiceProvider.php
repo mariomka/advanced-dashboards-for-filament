@@ -98,7 +98,13 @@ class AdvancedDashboardsForFilamentServiceProvider extends PackageServiceProvide
 
         FilamentView::registerRenderHook(
             PanelsRenderHook::PAGE_HEADER_ACTIONS_BEFORE,
-            fn (): View => view('advanced-dashboards-for-filament::dashboard.header-loading-indicator'),
+            fn (): View => view('advanced-dashboards-for-filament::dashboard.header-loading-indicator-start'),
+            scopes: AdvancedDashboard::class,
+        );
+
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::PAGE_HEADER_ACTIONS_AFTER,
+            fn (): View => view('advanced-dashboards-for-filament::dashboard.header-loading-indicator-end'),
             scopes: AdvancedDashboard::class,
         );
 
