@@ -1,7 +1,7 @@
 <div
     x-ref="advancedDashboard"
     class="adffi-advanced-dashboard-page"
-    :class="isFullscreen ? 'w-full h-full overflow-y-auto' : ''"
+    :class="isFullscreen ? 'w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-950' : ''"
     x-data="{ isFullscreen: false }"
     @fullscreenchange.window="isFullscreen = (document.fullscreenElement === $refs.advancedDashboard)"
     @if($loadCss)
