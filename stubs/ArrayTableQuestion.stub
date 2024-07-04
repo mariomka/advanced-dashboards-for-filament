@@ -1,0 +1,20 @@
+<?php
+
+namespace {{ namespace }};
+
+use Mariomka\AdvancedDashboardsForFilament\Questions\ArrayTableQuestion;
+
+class {{ class }} extends ArrayTableQuestion
+{
+    protected static ?string $heading = 'Array Table';
+
+    public function getColumns(): array
+    {
+        // ...
+    }
+
+    protected function getRecords(): array
+    {
+        // ...
+    }
+}

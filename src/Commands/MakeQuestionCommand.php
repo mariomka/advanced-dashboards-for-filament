@@ -20,7 +20,7 @@ class MakeQuestionCommand extends Command
 
     protected $description = 'Create a new Advanced Dashboard For Filament question class';
 
-    protected $signature = 'make:filament-question {name?} {--C|chart} {--S|stat} {--T|table}  {--panel=} {--F|force}';
+    protected $signature = 'make:filament-question {name?} {--C|chart} {--S|stat} {--T|table} {--A|array-table} {--panel=} {--F|force}';
 
     public function handle(): int
     {
@@ -42,9 +42,10 @@ class MakeQuestionCommand extends Command
             $this->option('chart') => 'Chart',
             $this->option('stat') => 'Stat',
             $this->option('table') => 'Table',
+            $this->option('array-table') => 'ArrayTable',
             default => select(
                 label: 'What type of question do you want to create?',
-                options: ['Chart', 'Stat', 'Table', 'Custom'],
+                options: ['Chart', 'Stat', 'Table', 'ArrayTable', 'Custom'],
             ),
         };
 
@@ -161,6 +162,11 @@ class MakeQuestionCommand extends Command
             ]);
         } elseif ($type === 'Table') {
             $this->copyStubToApp('TableQuestion', $path, [
+                'class' => $questionClass,
+                'namespace' => $namespace . ($questionNamespace !== '' ? "\\{$questionNamespace}" : ''),
+            ]);
+        } elseif ($type === 'ArrayTable') {
+            $this->copyStubToApp('ArrayTableQuestion', $path, [
                 'class' => $questionClass,
                 'namespace' => $namespace . ($questionNamespace !== '' ? "\\{$questionNamespace}" : ''),
             ]);
